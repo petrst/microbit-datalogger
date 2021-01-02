@@ -12,7 +12,6 @@ input.onButtonPressed(Button.A, function () {
     basic.showString("B")
 })
 function transmitData () {
-    timestamp = input.runningTime() - starttime
     message.setNumber(NumberFormat.Int8LE, 0, message_type);
 message.setNumber(NumberFormat.Int32BE, 1, timestamp);
 message.setNumber(NumberFormat.Int16BE, 5, value1);
@@ -35,6 +34,7 @@ let timestamp = 0
 let message_type = 0
 let message = pins.createBuffer(11);
 basic.forever(function () {
+    timestamp = input.runningTime() - starttime
     value1 = pins.analogReadPin(AnalogPin.P0)
     value2 = pins.analogReadPin(AnalogPin.P1)
     value3 = pins.analogReadPin(AnalogPin.P2)
